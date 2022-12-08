@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사용자 정보 확인</title>
+<title>Quiz02</title>
 
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
@@ -12,14 +14,14 @@
 
 </head>
 <body>
+	
 	<div class="container">
-		<h1>로그인</h1>
-		<form method="post" action="/lesson01/quiz10">
-			<input type="text" class="form-control col-3 mb-2" name="id" placeholder="아이디를 입력하세요">
-			<input type="password" class="form-control col-3 mb-2" name="password" placeholder="비밀번호를 입력하세요">
-			<button type="submit" class="btn btn-primary">로그인</button>
-		</form>
+		<h1>날짜, 시간 링크</h1>
+		<br>
+		<a href="/lesson02/quiz02_1.jsp?type=time" class="btn btn-info">현재 시간 확인</a>
+		<a href="/lesson02/quiz02_1.jsp?type=date" class="btn btn-success">현재 날짜 확인</a>
 	</div>
-
+	
+	
 </body>
 </html>

@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사용자 정보 확인</title>
+<title>Quiz03_1</title>
 
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
@@ -12,14 +14,30 @@
 
 </head>
 <body>
+	
+	<%
+		double tall = Integer.valueOf(request.getParameter("tall"));
+		double weight = Integer.valueOf(request.getParameter("weight"));
+		
+		double bmi = weight / ((tall / 100.0) * (tall / 100.0));
+		String result;
+		
+		if (bmi <= 20) {
+			result = "저체중";
+		} else if (bmi >= 21 || bmi <= 25) {
+			result = "정상";
+		} else if (bmi >= 26 || bmi <= 30) {
+			result = "과체중";
+		} else if (bmi >= 31) {
+			result = "비만";
+		}
+		
+	%>
 	<div class="container">
-		<h1>로그인</h1>
-		<form method="post" action="/lesson01/quiz10">
-			<input type="text" class="form-control col-3 mb-2" name="id" placeholder="아이디를 입력하세요">
-			<input type="password" class="form-control col-3 mb-2" name="password" placeholder="비밀번호를 입력하세요">
-			<button type="submit" class="btn btn-primary">로그인</button>
-		</form>
+		<h1>BMI 측정 결과</h3>
+		<div class="display-3">당신은 <%= result %>입니다.</div>
+		
 	</div>
-
+	
 </body>
 </html>

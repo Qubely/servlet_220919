@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사용자 정보 확인</title>
+<title>Quiz03</title>
 
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
@@ -12,14 +14,20 @@
 
 </head>
 <body>
+
 	<div class="container">
-		<h1>로그인</h1>
-		<form method="post" action="/lesson01/quiz10">
-			<input type="text" class="form-control col-3 mb-2" name="id" placeholder="아이디를 입력하세요">
-			<input type="password" class="form-control col-3 mb-2" name="password" placeholder="비밀번호를 입력하세요">
-			<button type="submit" class="btn btn-primary">로그인</button>
+		<h1>체격 조건 입력</h1>
+		<form method="get" action="/lesson01/quiz03_1.jsp">
+			<div class="form-group d-flex align-items-end">
+				<input type="text" class="form-control col-3 mr-2" name="tall" placeholder="키를 입력하세요">
+				<div class="mr-2">cm</div>
+				<input type="text" class="form-control col-3 mr-2" name="weight" placeholder="몸무게를를 입력하세요">
+				<div class="mr-2">kg</div>
+				<button type="submit" class="btn btn-info">계산</button>
+			</div>
 		</form>
 	</div>
+
 
 </body>
 </html>
