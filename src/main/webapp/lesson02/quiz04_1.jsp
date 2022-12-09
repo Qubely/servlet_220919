@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Quiz03</title>
+<title>Quiz04_1</title>
 
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
@@ -14,20 +14,45 @@
 
 </head>
 <body>
-
+	
+	<%
+		
+		double num1 = Double.parseDouble(request.getParameter("num1"));
+		double num2 = Double.parseDouble(request.getParameter("num2"));
+		String operator = request.getParameter("operator");	
+		double result = 0;
+		
+		if (operator.equals("plus")) {
+			result = num1 + num2;
+			operator = "+";
+		} else if (operator.equals("minus")) {
+			result = num1 - num2;
+			operator = "-";
+		} else if (operator.equals("multiple")) {
+			result = num1 * num2;
+			operator = "X";
+		} else if (operator.equals("divide")) {
+			result = num1 / num2;
+			operator = "/";
+		}
+	%>
+	
 	<div class="container">
-		<h1>체격 조건 입력</h1>
-		<form method="get" action="/lesson02/quiz03_1.jsp">
-			<div class="form-group d-flex align-items-end">
-				<input type="text" class="form-control col-2 mr-2" name="height" placeholder="키를 입력하세요.">
-				<div class="mr-3">cm</div>
-				<input type="text" class="form-control col-2 mr-2" name="weight" placeholder="몸무게를 입력하세요.">
-				<div class="mr-3">kg</div>
-				<button type="submit" class="btn btn-info">계산</button>
-			</div>
-		</form>
+		<h1>계산 결과</h1>
+		<div class="display-3">
+			<%= num1 %>
+			<%= operator %>
+			<%= num2 %>
+			=
+			<span class="text-primary"><%= result %></span>
+			<br>
+			<%
+				out.print(num1 + " " + operator + " "  + num2 + " = ");
+			%>
+			<span class="text-primary"><%= result %></span>
+		</div>
 	</div>
-
-
+	
+	
 </body>
 </html>
