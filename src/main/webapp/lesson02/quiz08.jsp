@@ -68,12 +68,28 @@
 		
 		<table class="table text-center">
 			<thead>
-				<th>id</th>
-				<th>표지</th>
-				<th>제목</th>
+				<tr>
+					<th>id</th>
+					<th>표지</th>
+					<th>제목</th>
+				</tr>
 			</thead>
 			<tbody>
+			<!-- 강사님 풀이 -->
 			<%
+				for (Map<String, Object> item : list) {
+			%>
+				<tr>
+					<td><%= item.get("id") %></td>
+					<td><img src="<%= item.get("image") %>" width="50" alt="표지"></td>
+					<td><a href="/lesson02/quiz08_1.jsp?id=<%= item.get("id") %>"><%= item.get("title") %></a></td>
+				</tr>
+			<%
+				}
+			%>
+			
+			<!-- 내 풀이 -->
+			<%-- <%
 				for (int i = 0; i < list.size(); i++) {
 			%>
 				<tr>
@@ -83,7 +99,7 @@
 				</tr>
 			<%
 				}
-			%>
+			%> --%>
 			</tbody>
 		</table>
 		

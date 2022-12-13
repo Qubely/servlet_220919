@@ -62,15 +62,43 @@
 	    };
 	    list.add(map);
 	%>
+	
 	<div class="container">
 		<table class="table table-borderless d-flex">
+	
+	<!-- 강사님 풀이 -->
 	<%    
+		// 테이블에 보여줄 책 정보 뽑아내기
+		int id = Integer.valueOf(request.getParameter("id"));
+		Map<String, Object> target = new HashMap<>();
+		for (Map<String, Object> item : list) {
+			if ((int)item.get("id") == id) {
+				target = item;
+				break;
+			}
+		}
+	%>
+			<tr>
+				<td><img src="<%= target.get("image")%>" alt="표지" width="300"></td>
+				<td>
+					<!-- <span class="d-block"></span> span태그를 블록화 시키는 법 -->
+					<div class="display-2 font-weight-bold"><%= target.get("title") %></div>
+					<div class="display-3 text-info"><%= target.get("author")%></div>
+					<div class="display-4 text-secondary"><%= target.get("publisher") %></div>
+				</td>
+			</tr>
+	<%
+		
+	%>
+	
+	<!-- 내 풀이 -->
+	<%-- <%    
 		Integer id = Integer.parseInt(request.getParameter("id"));
 		for (int i = 0; i < list.size(); i++) {
 			if (id.equals(list.get(i).get("id"))) {
 	%>
 			<tr>
-				<td rowspan="3"><img src="<%= list.get(i).get("image")%>"></td>
+				<td><img src="<%= list.get(i).get("image")%>"></td>
 				<td>
 					<div class="display-2 font-weight-bold"><%= list.get(i).get("title") %></div>
 					<div class="display-3 text-info"><%= list.get(i).get("author")%></div>
@@ -78,9 +106,10 @@
 				</td>
 			</tr>
 	<%
+				break;
 			}
 		}
-	%>
+	%> --%>
 		</table>
 	</div>
 
