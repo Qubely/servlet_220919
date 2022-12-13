@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>레이아웃(템플릿)</title>
+<title>Insert title here</title>
 
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
@@ -14,35 +14,32 @@
 
 	<style>
 		header {height:50px;}
-		.bottom {height:700px;}
-		.contents {height:90%;}
-		footer {height:10%}
+		nav {height:40px;}
+		.nav-item:hover {background-color: rgb(99, 28, 28);}
+		footer {height:50px;}
+		a, a:hover {text-decoration:none; color:red;}
 	</style>
 
 </head>
 <body>
-	
-	<div id="wrap" class="bg-dark">
+
+	<div id="wrap" class="container">
 		<jsp:include page="header.jsp" />
-		<div class="bottom bg-primary d-flex">
-			<jsp:include page="menu.jsp" />
-			<div class="right bg-success col-10">
-				<%
-					String contentName = "content2.jsp";
-				%>
-				<%-- <jsp:include page="content1.jsp" /> --%>
-				<jsp:include page="<%= contentName %>" />
-				<jsp:include page="footer.jsp" />
-			</div>
-		</div>
+		<jsp:include page="menu.jsp" />
+		<%
+			String category = request.getParameter("category");
+			String contentName = "content1.jsp";
+			if (category != null) {
+				 if (category.equals("전체")) {
+					 contentName ="content1.jsp";
+				} else {
+					 contentName ="content2.jsp";
+				}
+			}
+		%>
+		<jsp:include page="<%= contentName %>" />
+		<jsp:include page="footer.jsp" />
 	</div>
-	
+
 </body>
 </html>
-
-
-
-
-
-
-
