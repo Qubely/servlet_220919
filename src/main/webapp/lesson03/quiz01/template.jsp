@@ -13,31 +13,38 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 	<style>
-		header {height:50px;}
+		header {height:80px;}
 		nav {height:40px;}
 		.nav-item:hover {background-color: rgb(99, 28, 28);}
 		footer {height:50px;}
 		a, a:hover {text-decoration:none; color:red;}
+		.content {min-height:500px;}
 	</style>
 
 </head>
 <body>
 
 	<div id="wrap" class="container">
-		<jsp:include page="header.jsp" />
-		<jsp:include page="menu.jsp" />
+		<header class="d-flex justify-content-center align-items-center">
+			<jsp:include page="header.jsp" />
+		</header>
+		<nav class="d-flex align-items-center bg-danger">
+			<jsp:include page="menu.jsp" />
+		</nav>
 		<%
-			String category = request.getParameter("category");
+			//String category = request.getParameter("category");
 			String contentName = "content1.jsp";
-			if (category != null) {
-				 if (category.equals("전체")) {
-					 contentName ="content1.jsp";
-				} else {
-					 contentName ="content2.jsp";
-				}
-			}
+			//if (category != null) {
+			//	 if (category.equals("전체")) {
+			//		 contentName ="content1.jsp";
+			//	} else {
+			//		 contentName ="content2.jsp";
+			//	}
+			//}
 		%>
-		<jsp:include page="<%= contentName %>" />
+		<section class="content">
+			<jsp:include page="<%= contentName %>" />
+		</section>
 		<jsp:include page="footer.jsp" />
 	</div>
 

@@ -41,29 +41,53 @@
     map = new HashMap<String, String>() {{ put("ch", "121"); put("name", "KBSN 스포츠"); put("category", "스포츠"); } };
     list.add(map);
 %>
-<section>
-	<table class="table text-center">
-		<thead class= font-weight-bold">
-			<tr>
-				<th>채널</th>
-				<th>채널명</th>
-				<th>카테고리</th>
-			</tr>
-		</thead>
-		<tbody>
-		<%
-			String category = request.getParameter("category");
-			Map<String, String> target = new HashMap<>();
-			for (Map<String, String> channel : list) {
-		%>
-			<tr>
-				<td><%= channel.get("ch") %></td>
-				<td><%= channel.get("name") %></td>
-				<td><%= channel.get("category") %></td>
-			</tr>
-		<%			
+
+<table class="table text-center">
+	<thead class= font-weight-bold">
+		<tr>
+			<th>채널</th>
+			<th>채널명</th>
+			<th>카테고리</th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	<%
+		String category = request.getParameter("category");
+		for (Map<String, String> channel : list) {
+			if (category != null) {
+				if (category.equals(channel.get("category"))) {
+	%>
+		<tr>
+			<td><%= channel.get("ch") %></td>
+			<td><%= channel.get("name") %></td>
+			<td><%= channel.get("category") %></td>
+		</tr>
+	<%
+				} 
+			} else {
+	%>
+		<tr>
+			<td><%= channel.get("ch") %></td>
+			<td><%= channel.get("name") %></td>
+			<td><%= channel.get("category") %></td>
+		</tr>
+	<%
 			}
-		%>
-		</tbody>
-	</table>
-</section>
+		}
+	%>
+
+	<%-- <%
+		String category = request.getParameter("category");
+		for (Map<String, String> channel : list) {
+	%>
+		<tr>
+			<td><%= channel.get("ch") %></td>
+			<td><%= channel.get("name") %></td>
+			<td><%= channel.get("category") %></td>
+		</tr>
+	<%			
+		}
+	%> --%>
+	</tbody>
+</table>
