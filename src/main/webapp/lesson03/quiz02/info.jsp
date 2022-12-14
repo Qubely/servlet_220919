@@ -84,7 +84,8 @@
 <div class="d-flex m-3">
 <%
 	String id = request.getParameter("id");
-	if (id == null) {
+	String input = request.getParameter("input");
+	if (id == null && input == null) {
 %>
 		<img src="<%= artistInfo.get("photo") %>" alt="가수 이미지" height="220px">
 		<div class="ml-3">
@@ -94,23 +95,40 @@
 		</div>
 <%	
 	} else {
-		int id1 = Integer.valueOf(request.getParameter("id"));
 		for (Map<String, Object> item : musicList) {
-			if (id1 == (int)item.get("id")) {
+			if (id != null && Integer.valueOf(id) == (int)item.get("id") || input != null && item.get("title").equals(input)) {
 %>
-				<img src="<%= item.get("thumbnail") %>" alt="앨범 이미지" height="220px">
+				<div>
+					<img src="<%= item.get("thumbnail") %>" alt="앨범 이미지" height="220px">
+				</div>
 				<div class="ml-3">
 					<h1><%= item.get("title") %></h1>
 					<h5 class="text-success font-weight-bold mt-3 mb-3"><%= item.get("singer") %></h5>
-					<div class="col-12">
-						<div class="d-flex justify-content-between">
-							<div>앨범</div>
-							<div><%= item.get("album") %></div>
-						</div>
-					</div>
+					<table class="border-collapse">
+						<tr>
+							<td class="pr-4">앨범</td>
+							<td><%= item.get("album") %></td>
+						</tr>
+						<tr>
+							<td class="pr-4">재생시간</td>
+						<%
+							int min = (int)item.get("time")/60;
+							int sec = (int)item.get("time")%60;
+						%>
+							<td><%= min %> : <%= sec %></td>
+						</tr>
+						<tr>
+							<td class="pr-4">작곡가</td>
+							<td><%= item.get("composer") %></td>
+						</tr>
+						<tr>
+							<td class="pr-4">작사가</td>
+							<td><%= item.get("lyricist") %></td>
+						</tr>
+					</table>
 				</div>
 <%
-			}
+			} 
 		}
 	}
 %>

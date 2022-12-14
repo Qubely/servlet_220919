@@ -81,6 +81,11 @@
     musicInfo.put("lyricist", "아이유");
     musicList.add(musicInfo);
 %>
+<%
+	String id = request.getParameter("id");
+	String input = request.getParameter("input");
+	if (id == null && input == null) {
+%>
 <h3>곡 목록</h3>
 <table class="table text-center">
 	<thead>
@@ -89,16 +94,23 @@
 		<th>앨범</th>
 	</thead>
 	<tbody>
-	<%
+<%
 		for (Map<String, Object> item : musicList) {
-	%>
+%>
 		<tr>
 			<th><%= item.get("id") %></th>
 			<td><a href="/lesson03/quiz02/template.jsp?id=<%= item.get("id") %>"><%= item.get("title") %></a></td>
 			<th><%= item.get("album") %></th>
 		</tr>
-	<%
+<%
 		}
-	%>
+	} else {
+%>
+<h3>가사</h3>
+<hr>
+<div><b>가사 정보 없음</b></div>
+<%
+	}
+%>
 	</tbody>
 </table>
