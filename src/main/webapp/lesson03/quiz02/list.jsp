@@ -99,7 +99,7 @@
 %>
 		<tr>
 			<th><%= item.get("id") %></th>
-			<td><a href="/lesson03/quiz02/template.jsp?id=<%= item.get("id") %>"><%= item.get("title") %></a></td>
+			<td><a href="/lesson03/quiz02/detail_template.jsp?id=<%= item.get("id") %>"><%= item.get("title") %></a></td>
 			<th><%= item.get("album") %></th>
 		</tr>
 <%

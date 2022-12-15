@@ -82,6 +82,14 @@
 %>
 
 <div class="d-flex m-3">
+<!-- request 예외처리 방법 -->
+<%-- <%
+	if (request.getParameter("id") != null) {
+		int id = Integer.parseInt(request.getParameter("id"));
+	}
+%> --%>
+
+<!-- 가수 정보 -->
 <%
 	String id = request.getParameter("id");
 	String input = request.getParameter("input");
@@ -93,6 +101,8 @@
 			<h5><%= artistInfo.get("agency") %></h5>
 			<h5><%= artistInfo.get("debute") %> 데뷔</h5>
 		</div>
+
+<!-- 곡 정보 -->
 <%	
 	} else {
 		for (Map<String, Object> item : musicList) {
@@ -104,18 +114,14 @@
 				<div class="ml-3">
 					<h1><%= item.get("title") %></h1>
 					<h5 class="text-success font-weight-bold mt-3 mb-3"><%= item.get("singer") %></h5>
-					<table class="border-collapse">
+					<table class="border-collapse text-secondary">
 						<tr>
 							<td class="pr-4">앨범</td>
 							<td><%= item.get("album") %></td>
 						</tr>
 						<tr>
 							<td class="pr-4">재생시간</td>
-						<%
-							int min = (int)item.get("time")/60;
-							int sec = (int)item.get("time")%60;
-						%>
-							<td><%= min %> : <%= sec %></td>
+							<td><%= (int)item.get("time") / 60 %> : <%= (int)item.get("time") % 60 %></td>
 						</tr>
 						<tr>
 							<td class="pr-4">작곡가</td>
