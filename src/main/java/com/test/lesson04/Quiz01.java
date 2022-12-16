@@ -39,7 +39,7 @@ public class Quiz01 extends HttpServlet {
 			ResultSet resultSet = ms.select(selectQuery);
 			while (resultSet.next()) {
 				out.print("매물 주소 : " + resultSet.getString("address"));
-				out.print(", 면적 : " + resultSet.getString("area"));
+				out.print(", 면적 : " + resultSet.getInt("area"));
 				out.println(", 타입 : " + resultSet.getString("type"));
 			}
 		} catch (SQLException e) {
