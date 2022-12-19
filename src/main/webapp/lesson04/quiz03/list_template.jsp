@@ -42,7 +42,7 @@
 		<nav>
 			<jsp:include page="menu.jsp" />
 		</nav>
-		<section class="content mt-3 d-flex flex-wrap justify-content-between">
+		<section class="content mt-3 d-flex flex-wrap">
 			<jsp:include page="list_content.jsp" />
 		</section>
 		<footer class="d-flex justify-content-center align-items-center mt-5">

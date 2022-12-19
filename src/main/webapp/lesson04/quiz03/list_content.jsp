@@ -12,7 +12,7 @@
 
 	while (rs.next()) {
 %>
-	<div class="box mb-3">
+	<div class="box m-1">
 <%
 	if (rs.getString("pictureUrl") != null) {
 %>

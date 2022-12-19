@@ -44,6 +44,35 @@
 			<jsp:include page="footer.jsp" />
 		</footer>
 	</div>
+	
+	<script>
+		
+		$(document).ready(function() {
+			
+			$("#myForm").submit(function() {
+				let id = $("select[name=id]").val();
+				let title = $('input[name=title]').val().trim();
+				let price = $('input[name=price]').val().trim();
+				
+				if (id == "-아이디 선택-") {
+					alert("닉네임을 선택하세요.");
+					return false;
+				}
+				if (title == "") {
+					alert("제목을 입력하세요.");
+					return false;
+				}
+				if (price == "") {
+					alert("가격을 입력하세요.");
+					return false;
+				}
+				return true;
+				
+			})
+			
+		})
+		
+	</script>
 <%
 	ms.disconnect();
 %>

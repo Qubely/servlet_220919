@@ -10,7 +10,7 @@
 	String selectQuery = "select * from `seller`;";
 	ResultSet rs = ms.select(selectQuery);
 %>
-<form method="post" action="/lesson04/quiz03">
+<form id="myForm" method="post" action="/lesson04/quiz03">
 	<div class="d-flex justify-content-around align-items-center mb-3">
 		<select class="form-control col-3" name="id">
 			<option>-아이디 선택-</option>
@@ -43,5 +43,5 @@
 	<button type="submit" class="btn btn-secondary w-100">저장</button>
 			</form>
 <%
-	
+	ms.disconnect();
 %>
